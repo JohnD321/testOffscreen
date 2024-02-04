@@ -1,1 +1,16 @@
 <!doctype html>
+<html lang= 'en'>
+  <head>
+    <meta charset= 'utf-8'>
+    <title>Document</title>
+    <link rel= 'icon' href= 'data:;base64,iVBORw0KGgo='>
+  </head>
+  <body>
+    <canvas id= 'canvas'></canvas>
+    <script>
+      const canvas= document.getElementById('canvas')
+      const offscreen= canvas.transferControlToOffscreen()
+      const worker= new Worker('worker.js')
+      worker.postMessage({canvas: offscreen}, [offscreen])
+    </script>
+  </body>
